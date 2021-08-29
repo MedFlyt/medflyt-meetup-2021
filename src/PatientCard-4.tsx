@@ -1,8 +1,9 @@
 import { gql, useQuery } from "@apollo/client";
 import React from "react";
 import GraphQL from "./graphql";
+import "./PatientCard.css"
 
-const GET_PATIENT = GraphQL.query<
+export const GET_PATIENT = GraphQL.query<
   { patient: { id: string; firstName: string; lastName: string } },
   { patientId: number }
 >(gql`
@@ -29,8 +30,10 @@ function PatientCard(props: Props) {
   return (
     <div className="PatientCard">
       <h1>
-        {data.patient.firstname} {data.patient.lastName}
+        {data.patient.firstName} {data.patient.lastName}
       </h1>
     </div>
   );
 }
+
+export default PatientCard;

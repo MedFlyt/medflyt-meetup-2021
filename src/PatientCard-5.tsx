@@ -1,14 +1,15 @@
 import { gql, useQuery } from "@apollo/client";
 import React from "react";
 import GraphQL from "./graphql";
+import "./PatientCard.css"
 
-const GET_PATIENT = GraphQL.query<
+export const GET_PATIENT = GraphQL.query<
   {
     patient: {
       id: string;
       firstName: string;
       lastName: string;
-      visits: ReadonlyArray<{ startTime: Date; endTime: Date }>;
+      visits: ReadonlyArray<{ id: string; startTime: Date; endTime: Date }>;
     };
   },
   { patientId: number }
@@ -19,6 +20,7 @@ const GET_PATIENT = GraphQL.query<
       firstName
       lastName
       visits {
+        id
         startTime
         endTime
       }
@@ -42,10 +44,18 @@ function PatientCard(props: Props) {
       <h1>
         {data.patient.firstName} {data.patient.lastName}
       </h1>
-      <h2>Visits</h2>
-      {data.patient.visits.map((visit) => {
-        return `${visit.startTime.toDateString()} - ${visit.endTime.toDateString()}`;
-      })}
+
+      <h2>Recent visits</h2>
+      <ul>
+        {data.patient.visits.map((visit) => (
+          <li key={visit.id}>
+            <span>{visit.startTime.toLocaleDateString()}</span>
+            <span>{visit.startTime.toLocaleTimeString()} &raquo; {visit.endTime.toLocaleTimeString()}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
+
+export default PatientCard;

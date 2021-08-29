@@ -1,7 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
 import React from "react";
+import "./PatientCard.css";
 
-const GET_PATIENT = gql`
+export const GET_PATIENT = gql`
   query ($patientId: Int!) {
     patient(id: $patientId) {
       id
@@ -26,3 +27,5 @@ function PatientCard(props: Props) {
     </div>
   );
 }
+
+export default PatientCard;
