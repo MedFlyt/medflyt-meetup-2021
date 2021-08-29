@@ -1,0 +1,35 @@
+.PatientCard {
+  background-color: #fff;
+  box-shadow: 0 16px 32px rgb(0 0 0 / 15%);
+  padding: 24px;
+  border-radius: 8px;
+  width: 520px;
+  max-width: 100%;
+}
+
+.PatientCard h1 {
+  margin: 0 0 12px;
+  padding: 0 0 12px;
+}
+
+.PatientCard h2 {
+  margin: 0 0 4px;
+  padding: 0 0 4px;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #666;
+}
+
+.PatientCard ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.PatientCard ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid #EEE;
+}
