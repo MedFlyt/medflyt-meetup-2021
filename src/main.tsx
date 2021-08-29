@@ -2,6 +2,7 @@ import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import ErrorBoundary from "./ErrorBoundary";
 import "./index.css";
 import { GET_PATIENT } from "./PatientCard";
 
@@ -44,9 +45,11 @@ const mocks: ReadonlyArray<MockedResponse> = [
 
 ReactDOM.render(
   <React.StrictMode>
-    <MockedProvider mocks={mocks}>
-      <App />
-    </MockedProvider>
+    <ErrorBoundary>
+      <MockedProvider mocks={mocks}>
+        <App />
+      </MockedProvider>
+    </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById("root")
 );
