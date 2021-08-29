@@ -1,0 +1,39 @@
+scalar Date
+
+type Query {
+  patient(id: Int!): Patient!
+}
+
+type Patient {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  visits(before: Date, after: Date): [Visit!]!
+}
+
+type Visit {
+  id: ID!
+  startTime: Date!
+  endTime: Date!
+  nursingDocuments: [NursingDocument!]!
+}
+
+type NursingDocument {
+  id: ID!
+  name: String!
+  isSubmitted: Boolean!
+}
+
+# patient(id: $patientId) {
+#       id
+#       firstName
+#       lastName
+#       visits (before: "2021-31-08")  {
+#         startTime
+#         endTime
+#         nursingDocuments {
+#           name
+#           isSubmitted
+#         }
+#       }
+#     }

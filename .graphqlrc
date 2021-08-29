@@ -1,0 +1,6 @@
+# For VSCode graphql plugin
+
+projects:
+  demo:
+    schema: src/schemas/schema.graphql
+    documents: src/**/*.{graphql,tsx,jsx,ts,js}
